@@ -58,11 +58,11 @@ app.get('/', function (req, res) {
     col.insert({ip: req.ip, date: Date.now()});
     col.count(function(err, count){
       //res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
-      res.render('index', {port: port});
+      res.render('index', {port: port, ip: ip});
     });
   } else {
     //res.render('index.html', { pageCountMessage : null});
-    res.render('index', {port: port});
+    res.render('index', {port: port, ip: ip});
   }
 });
 
