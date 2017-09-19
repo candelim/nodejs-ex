@@ -4,7 +4,8 @@ var fs      = require('fs');
 var app     = express();
 var eps     = require('ejs');
 
-app.engine('html', require('ejs').renderFile);
+//app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 7070;
 var ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
@@ -56,10 +57,12 @@ app.get('/', function (req, res) {
     // Create a document with request IP and current time of request
     col.insert({ip: req.ip, date: Date.now()});
     col.count(function(err, count){
-      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
+      //res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
+      res.render('index', {port: port});
     });
   } else {
-    res.render('index.html', { pageCountMessage : null});
+    //res.render('index.html', { pageCountMessage : null});
+    res.render('index', {port: port});
   }
 });
 
