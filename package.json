@@ -6,7 +6,8 @@
   "dependencies": {
       "express": "*",
       "mongodb": "*",
-      "ejs": "*"
+      "ejs": "*",
+      "ip": "*"
   },
   "engine": {
     "node": "*",

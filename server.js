@@ -3,13 +3,15 @@ var express = require('express');
 var fs      = require('fs');
 var app     = express();
 var eps     = require('ejs');
-
+var ipadd   = require('ip');
+ 
 //app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 7070;
 //var ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
-var ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP;
+//var ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP;
+var ip    = ipadd.address();
 var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL;
 var mongoURLLabel = "";
 if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
