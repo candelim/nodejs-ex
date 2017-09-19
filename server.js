@@ -8,7 +8,8 @@ var eps     = require('ejs');
 app.set('view engine', 'ejs');
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 7070;
-var ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+//var ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+var ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP;
 var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL;
 var mongoURLLabel = "";
 if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
