@@ -56,10 +56,10 @@ var initDb = function(callback) {
 
 app.get('/', function (req, res) {
   if (db) {
-    var col = db.collection('counts');
+    //var col = db.collection('counts');
     // Create a document with request IP and current time of request
-    col.insertOne({ip: req.ip, date: Date.now()});
-    col.count(function(err, count){
+    db.counts.insertOne({ip: req.ip, date: Date.now()});
+    db.counts.count(function(err, count){
       //res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
       res.render('index', {port: port, ip: ip});
     });
@@ -71,7 +71,7 @@ app.get('/', function (req, res) {
 
 app.get('/pagecount', function (req, res) {
   if (db) {
-    db.collection('counts').count(function(err, count ){
+    db.counts.count(function(err, count ){
       res.send('{ pageCount: ' + count +'}');
     });
   } else { 
